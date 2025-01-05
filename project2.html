@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stat Arb</title>
+  <title>Private Credit Portfolio</title>
   
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -181,14 +181,14 @@
 </head>
 <body>
   <!-- Link to Home -->
-  <a href="/home/" class="home-button">
-    <img src="../assets/home.png" alt="Home Icon" />
+  <a href="./index.html" class="home-button">
+    <img src="./assets/home.png" alt="Home Icon" />
   </a>
 
   <!-- Section 1: Title and Summary -->
   <section class="title-summary">
-    <h1>Statistical Arbitrage Portfolio</h1>
-    <p>This project uses Markowitz optimization to trade a portfolio of mean-reverting stock pairs, aiming to outperform the S&P 500.</p>
+    <h1>Evaluating Private Credit Performance</h1>
+    <p>This project employs Monte Carlo simulations to analyze Apollo's $25 billion private credit initiative, evaluating diversification, default risks, and profitability across six asset classes.</p>
   </section>
 
   <!-- Section 2: Main Ideas with Plot on the Right -->
@@ -196,17 +196,17 @@
     <div class="content">
       <h2 style="margin-left: 28px;">Key Findings</h2>
       <ul>
-        <li>By using cointegration tests, volatility filters, and z-score thresholds, the model successfully narrowed down thousands of potential stock pairs to a diversified portfolio of 50 high-quality pairs.</li>
-        <li>The model especially outperformed the S&P 500 in bear markets by exploiting more frequent price discrepancies from heightened volatility and mispricing.</li>
-        <li>The trading model delivered cumulative profits similar to the S&P 500, but its reliance on cointegration, a long-term concept, made it less effective at interpreting short-term trends.</li>
+        <li>While mezzanine loans made up only 10% of the portfolio, their profits matched the highest contributor, middle-market loans, at $1.54 billion. Their ROI of 62% was driven by compounding PIK interest despite a 42% default rate.</li>
+        <li>Senior secured loans anchored the portfolio with low risk and predictable cash flows, offering a 9.1% ROI due to repayment priority and collateral backing.</li>
+        <li>The portfolio broke even in 8.9 years, with accelerated returns driven by compounding interest and loan maturities, showcasing logistic growth over time.</li>
       </ul>
     </div>
     <div class="plot">
       <figure>
         <div class="plot-image">
-          <img src="../assets/statarb1.png" alt="Main Ideas Plot"/>
+          <img src="./assets/credit1.png" alt="Main Ideas Plot"/>
         </div>
-        <figcaption>Figure 1: Model outperforms in volatile periods but struggles with consistent market trends.</figcaption>
+        <figcaption>Figure 1: Cash Flow Composition: Investment, repayments, and profit</figcaption>
       </figure>
     </div>
   </section>
@@ -216,14 +216,14 @@
     <div class="plot">
       <figure>
         <div class="plot-image">
-          <img src="../assets/statarb2.png" alt="Additional Plot"/>
+          <img src="./assets/credit2.png" alt="Additional Plot"/>
         </div>
-        <figcaption>Figure 2: Arbitrage returns align with S&P 500 returns but with greater volatility.</figcaption>
+        <figcaption>Figure 2: Profit and ROI by Loan Type</figcaption>
       </figure>
     </div>
     <div class="links">
-      <a href="https://github.com/OakleyBrowning/stat_arb" target="_blank" class="button">GitHub</a>
-      <a href="https://drive.google.com/file/d/1dZqk1cI4StyzNaesqByiFu6F1YIYUSZS/view?usp=sharing" target="_blank" class="button">Report</a>
+      <a href="https://github.com/OakleyBrowning/credit_simulation" target="_blank" class="button">GitHub</a>
+      <a href="https://drive.google.com/file/d/1kLL0xXwDn1JN_oH2kFo50QWLn2rjXNYi/view?usp=sharing" target="_blank" class="button">Report</a>
     </div>
   </section>
 
