@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stat Arb</title>
+  
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* General Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 1.5rem;
+      padding: 20px;
+      overflow: hidden;
+    }
+    /* Home button */
+    .home-button {
+      position: fixed; /* Fixes it to the corner of the viewport */
+      top: 20px; /* Adjusts spacing from the top */
+      left: 20px; /* Adjusts spacing from the left */
+      z-index: 1000; /* Ensures it stays above other elements */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-button img {
+      width: 32px; /* Icon size */
+      height: 32px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out; /* Adds a subtle hover effect */
+    }
+
+    .home-button img:hover {
+      transform: scale(1.2); /* Enlarge slightly on hover */
+    }
+
+    /* Title and Summary Section */
+    .title-summary {
+      background: #ebdecd;
+      color: #203853;
+      text-align: center;
+      display: flex;
+      flex-direction: column; 
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+    }
+    .title-summary h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.5s ease-in-out;
+    }
+    .title-summary p {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      animation: fadeInUp 1.5s ease-in-out;
+      max-width: 800px;
+    }
+
+    /* Main Ideas Section */
+    .main-ideas {
+      background: linear-gradient(135deg, #336659, #829a80);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main-ideas .content {
+      flex: 1;
+      margin-right: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .main-ideas .content ul li {
+      margin-bottom: 0.6em;
+    }
+
+    .main-ideas .plot {
+      flex: 1;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .main-ideas .plot-image {
+      border: 1.5px solid black; /* Black border around the image */
+      display: inline-block; /* Ensure proper layout */
+      max-width: 100%;
+    }
+
+    /* Additional Section */
+    .additional-section {
+      background: linear-gradient(135deg, #0066FF, #4DAAFF);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .additional-section .plot {
+      flex: 1;
+      margin-right: 20px;
+      opacity: 0;
+      transform: translateX(-50px);
+      margin-left: 120px;
+    }
+
+    .additional-section .plot-image {
+      border: 1.5px solid black; /* Black border around the image */
+      display: inline-block; /* Ensure proper layout */
+      max-width: 100%;
+    }
+
+    .additional-section .links {
+      flex: 1;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    /* Image + Caption */
+    figure {
+      display: inline-block; /* or block, your preference */
+      margin: 0; 
+      text-align: center;
+    }
+    figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    figcaption {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #fff; /* for contrast on dark backgrounds */
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #FFF;
+      color: #0066FF;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+    }
+    .button:hover {
+      background-color: #FF3C2A;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    /* Fade In Keyframes */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Link to Home -->
+  <a href="index.html#pinned-section" class="home-button">
+    <img src="./assets/home.png" alt="Home Icon" />
+  </a>
+
+  <!-- Section 1: Title and Summary -->
+  <section class="title-summary">
+    <h1>Statistical Arbitrage Portfolio</h1>
+    <p>This project uses Markowitz optimization to trade a portfolio of mean-reverting stock pairs, aiming to outperform the S&P 500.</p>
+  </section>
+
+  <!-- Section 2: Main Ideas with Plot on the Right -->
+  <section class="main-ideas">
+    <div class="content">
+      <h2 style="margin-left: 28px;">Key Findings</h2>
+      <ul>
+        <li>By using cointegration tests, volatility filters, and z-score thresholds, the model successfully narrowed down thousands of potential stock pairs to a diversified portfolio of 50 high-quality pairs.</li>
+        <li>The model especially outperformed the S&P 500 in bear markets by exploiting more frequent price discrepancies from heightened volatility and mispricing.</li>
+        <li>The trading model delivered cumulative profits similar to the S&P 500, but its reliance on cointegration, a long-term concept, made it less effective at interpreting short-term trends.</li>
+      </ul>
+    </div>
+    <div class="plot">
+      <figure>
+        <div class="plot-image">
+          <img src="./assets/statarb1.png" alt="Main Ideas Plot"/>
+        </div>
+        <figcaption>Figure 1: Model outperforms in volatile periods but struggles with consistent market trends.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Section 3: Plot on the Left with Buttons on the Right -->
+  <section class="additional-section">
+    <div class="plot">
+      <figure>
+        <div class="plot-image">
+          <img src="./assets/statarb2.png" alt="Additional Plot"/>
+        </div>
+        <figcaption>Figure 2: Arbitrage returns align with S&P 500 returns but with greater volatility.</figcaption>
+      </figure>
+    </div>
+    <div class="links">
+      <a href="https://github.com/OakleyBrowning/stat_arb" target="_blank" class="button">GitHub</a>
+      <a href="https://drive.google.com/file/d/1dZqk1cI4StyzNaesqByiFu6F1YIYUSZS/view?usp=sharing" target="_blank" class="button">Report</a>
+    </div>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate the "content" in Section 2
+    gsap.fromTo(".content", 
+      { opacity: 0, y: 50 }, 
+      { 
+        opacity: 1, y: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".content",
+          start: "top 80%", 
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Animate the first plot (Section 2)
+    gsap.fromTo(".main-ideas .plot", 
+      { opacity: 0, scale: 0.8 },
+      { 
+        opacity: 1, scale: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".main-ideas .plot",
+          start: "top 80%", // Adjust if you want it later
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Animate the second plot (Section 3)
+    gsap.fromTo(".additional-section .plot",
+      { opacity: 0, x: -50 },
+      { 
+        opacity: 1, x: 0,
+        duration: 1,     // Increase to slow the fade
+        delay: 0.3,        // Add a slight delay
+        scrollTrigger: {
+          trigger: ".additional-section .plot",
+          start: "top 80%", 
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Animate the links in Section 3
+    gsap.fromTo(".links",
+      { opacity: 0, x: 50 },
+      { 
+        opacity: 1, x: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: ".links",
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+  </script>
+</body>
+</html>
